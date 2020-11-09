@@ -3,6 +3,8 @@ FROM debian as qemu
 
 RUN mkdir /qemu
 WORKDIR /qemu
+RUN apt-get update
+RUN apt-get install -y wget
 RUN wget -q -O - 'https://github.com/balena-io/qemu/releases/download/v3.0.0%2Bresin/qemu-3.0.0+resin-arm.tar.gz' | tar zxf - --strip-components 1
 
 FROM arm32v7/debian as builder
